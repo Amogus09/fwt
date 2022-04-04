@@ -65,6 +65,7 @@ class MyThread(threading.Thread):
             elif int(port) == 7784:
                 sock.sendto(Pacotes[7], (ip, int(port)))
 
+class Wz(threading.Thread):
     def run(self):
         while True:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -83,6 +84,8 @@ class MyThread(threading.Thread):
 if __name__ == '__main__':
     try:
         for x in range(100):
+            mythread = Wz()
+            mythread.start()
             mythread = MyThread()
             mythread.start()
             time.sleep(0.1)
